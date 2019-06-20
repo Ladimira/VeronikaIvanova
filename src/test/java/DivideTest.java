@@ -34,7 +34,7 @@ public class DivideTest {
     @Test (dataProviderClass = DataProviders.class, dataProvider = "correct data")
     public void differentSignNumbersTest(long a, long b,double c, double d){
         assertEquals(-b/a,calculator.div(-b,a));
-        assertEquals(-c/d,calculator.div(-d,-c));
+        assertEquals(-d/c,calculator.div(-d,c));
     }
 
     @Test (dataProviderClass = DataProviders.class, dataProvider = "correct data")

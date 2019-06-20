@@ -25,7 +25,7 @@ public class SubtractTest {
     @Test(dataProviderClass = DataProviders.class, dataProvider = "correct data")
     public void negativeNumbersTest(long a, long b,double c, double d){
         assertEquals(b-a,calculator.sub(-a,-b));
-        assertEquals(c-d,calculator.sub(-c,-d));
+        assertEquals(d-c,calculator.sub(-c,-d));
     }
 
     @Test(dataProviderClass = DataProviders.class, dataProvider = "correct data")
