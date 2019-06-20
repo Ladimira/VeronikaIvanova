@@ -4,7 +4,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static org.testng.AssertJUnit.assertEquals;
-
+// TODO Same comments as for AddTest class
 public class DivideTest {
     Calculator calculator;
     @BeforeMethod
