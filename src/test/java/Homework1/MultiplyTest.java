@@ -5,42 +5,51 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.Assert.assertEquals;
 
 public class MultiplyTest {
     Calculator calculator;
+
     @BeforeMethod
-    public void setUp(){
+    public void setUp() {
         calculator = new Calculator();
     }
 
     @AfterMethod
-    public void tearDown(){
+    public void tearDown() {
         calculator = null;
     }
 
     @Test(dataProviderClass = DataProviders.class, dataProvider = "correct data")
-    public void positiveNumbersTest(long a, long b,double c, double d){
-        assertEquals(a*b,calculator.mult(a,b));
-        assertEquals(c*d,calculator.mult(c,d));
+    public void positiveNumbersTest(long a, long b, double c, double d) {
+        //test mult of longs
+        assertEquals(calculator.mult(a, b), a * b);
+        //test mult of doubles
+        assertEquals(calculator.mult(c, d), c * d);
 
     }
 
     @Test(dataProviderClass = DataProviders.class, dataProvider = "correct data")
-    public void negativeNumbersTest(long a, long b,double c, double d){
-        assertEquals(a*b,calculator.mult(-a,-b));
-        assertEquals(c*d,calculator.mult(-c,-d));
+    public void negativeNumbersTest(long a, long b, double c, double d) {
+        //test mult of longs
+        assertEquals(calculator.mult(-a, -b), a * b);
+        //test mult of doubles
+        assertEquals(calculator.mult(-c, -d), c * d);
     }
 
     @Test(dataProviderClass = DataProviders.class, dataProvider = "correct data")
-    public void zeroTest(long a, long b,double c, double d){
-        assertEquals(0L,calculator.mult(0,b));
-        assertEquals(0.0,calculator.mult(0,d));
+    public void zeroTest(long a, long b, double c, double d) {
+        //test mult of longs
+        assertEquals(calculator.mult(0L, b), 0L);
+        //test mult of doubles
+        assertEquals(calculator.mult(0.0, d), 0.0);
     }
 
     @Test(dataProviderClass = DataProviders.class, dataProvider = "correct data")
-    public void differentSignNumbersTest(long a, long b,double c, double d){
-        assertEquals(-a*b,calculator.mult(a,-b));
-        assertEquals(-c*d,calculator.mult(c,-d));
+    public void differentSignNumbersTest(long a, long b, double c, double d) {
+        //test mult of longs
+        assertEquals(calculator.mult(-a, b), -a * b);
+        //test mult of doubles
+        assertEquals(calculator.mult(-c, d), -c * d);
     }
 }

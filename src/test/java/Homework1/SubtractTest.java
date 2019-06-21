@@ -5,40 +5,50 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.Assert.assertEquals;
 
 public class SubtractTest {
     Calculator calculator;
+
     @BeforeMethod
-    public void setUp(){
+    public void setUp() {
         calculator = new Calculator();
     }
 
     @AfterMethod
-    public void tearDown(){
+    public void tearDown() {
         calculator = null;
     }
+
     @Test(dataProviderClass = DataProviders.class, dataProvider = "correct data")
-    public void positiveNumbersTest(long a, long b,double c, double d){
-        assertEquals(a-b,calculator.sub(a,b));
-        assertEquals(c-d,calculator.sub(c,d));
+    public void positiveNumbersTest(long a, long b, double c, double d) {
+        //test sub of longs
+        assertEquals(calculator.sub(a, b), a - b);
+        //test sub of doubles
+        assertEquals(calculator.sub(c, d), c - d);
     }
 
     @Test(dataProviderClass = DataProviders.class, dataProvider = "correct data")
-    public void negativeNumbersTest(long a, long b,double c, double d){
-        assertEquals(b-a,calculator.sub(-a,-b));
-        assertEquals(d-c,calculator.sub(-c,-d));
+    public void negativeNumbersTest(long a, long b, double c, double d) {
+        //test sub of longs
+        assertEquals(calculator.sub(a, b), b - a);
+        //test sub of doubles
+        assertEquals(calculator.sub(c, d), d - c);
     }
 
     @Test(dataProviderClass = DataProviders.class, dataProvider = "correct data")
-    public void zeroTest(long a, long b,double c, double d){
-        assertEquals(-b,calculator.sub(0,b));
-        assertEquals(-d,calculator.sub(0,d));
+    public void zeroTest(long a, long b, double c, double d) {
+        //test sub of longs
+        assertEquals(calculator.sub(0, b), - b);
+        //test sub of doubles
+        assertEquals(calculator.sub(0, d), - d);
     }
 
     @Test(dataProviderClass = DataProviders.class, dataProvider = "correct data")
-    public void differentSignNumbersTest(long a, long b,double c, double d){
-        assertEquals(a+b,calculator.sub(a,-b));
-        assertEquals(c+d,calculator.sub(c,-d));
+    public void differentSignNumbersTest(long a, long b, double c, double d) {
+        //test sub of longs
+        assertEquals(calculator.sub(a, -b), a + b);
+        //test sub of doubles
+        assertEquals(calculator.sub(c, -d), c + d);
     }
 }
