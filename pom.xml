@@ -14,64 +14,35 @@
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
-            <build>
-                <defaultGoal>clean,test</defaultGoal>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>2.12.4</version>
-                        <configuration>
-                            <suiteXmlFiles>src/test/resources/AddSubtract.xml</suiteXmlFiles>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
+            <properties>
+                <suite.xml>src/test/resources/Homework1/AddSubtract.xml</suite.xml>
+            </properties>
 
         </profile>
 
         <profile>
             <id>MultiplyDivide</id>
-            <build>
-                <defaultGoal>clean,test</defaultGoal>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>2.12.4</version>
-                        <configuration>
-                            <suiteXmlFiles>src/test/resources/MultiplyDivide.xml</suiteXmlFiles>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
+            <properties>
+                <suite.xml>src/test/resources/Homework1/MultiplyDivide.xml</suite.xml>
+            </properties>
 
         </profile>
 
         <profile>
             <id>AllTests</id>
-            <build>
-                <defaultGoal>clean,test</defaultGoal>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>2.12.4</version>
-                        <configuration>
-                            <suiteXmlFiles>src/test/resources/AllTests.xml</suiteXmlFiles>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
+            <properties>
+                <suite.xml>src/test/resources/Homework1/AllTests.xml</suite.xml>
+            </properties>
 
         </profile>
     </profiles>
 
     <dependencies>
         <dependency>
-            <groupId>com.epam.tat.module4.calculator</groupId>
+            <groupId>com.epam.tat.module4</groupId>
             <artifactId>calculator</artifactId>
             <version>1.0</version>
+            <systemPath>${project.basedir}/lib/calculator-1.0.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
@@ -79,5 +50,14 @@
             <version>6.14.3</version>
         </dependency>
     </dependencies>
-
+    <build>
+        <defaultGoal>clean,test</defaultGoal>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.12.4</version>
+            </plugin>
+        </plugins>
+    </build>
 </project>

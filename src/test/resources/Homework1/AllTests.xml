@@ -2,22 +2,22 @@
 <suite name="AllTests">
     <test name="Add">
         <classes>
-            <class name="AddTest"/>
+            <class name="Homework1.AddTest"/>
         </classes>
     </test>
     <test name="Subtract">
         <classes>
-            <class name="SubtractTest"/>
+            <class name="Homework1.SubtractTest"/>
         </classes>
     </test>
     <test name="Multiply">
         <classes>
-            <class name="MultiplyTest"/>
+            <class name="Homework1.MultiplyTest"/>
         </classes>
     </test>
     <test name="Divide">
         <classes>
-            <class name="DivideTest"/>
+            <class name="Homework1.DivideTest"/>
         </classes>
     </test>
 </suite>
