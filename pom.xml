@@ -8,86 +8,74 @@
     <artifactId>homework1</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <!-- TODO Where is gitignore file -->
-
     <profiles>
         <profile>
             <id>AddSubtract</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
-            <build>
-                <!-- TODO  Why do you decide set this tag? -->
-                <!-- TODO  What is the purpose of it? -->
-                <defaultGoal>clean,test</defaultGoal>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>2.12.4</version>
-                        <configuration>
-                            <suiteXmlFiles>src/test/resources/AddSubtract.xml</suiteXmlFiles>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
+            <properties>
+                <suite.xml>src/test/resources/Homework1/AddSubtract.xml</suite.xml>
+            </properties>
 
         </profile>
 
         <profile>
             <id>MultiplyDivide</id>
-            <build>
-                <!-- TODO  Why do you decide set this tag? -->
-                <!-- TODO  What is the purpose of it? -->
-                <defaultGoal>clean,test</defaultGoal>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>2.12.4</version>
-                        <configuration>
-                            <suiteXmlFiles>src/test/resources/MultiplyDivide.xml</suiteXmlFiles>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
+            <properties>
+                <suite.xml>src/test/resources/Homework1/MultiplyDivide.xml</suite.xml>
+            </properties>
 
         </profile>
 
         <profile>
             <id>AllTests</id>
-            <build>
-                <!-- TODO  Why do you decide set this tag? -->
-                <!-- TODO  What is the purpose of it? -->
-                <defaultGoal>clean,test</defaultGoal>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>2.12.4</version>
-                        <configuration>
-                            <suiteXmlFiles>src/test/resources/AllTests.xml</suiteXmlFiles>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
+            <properties>
+                <suite.xml>src/test/resources/Homework1/AllTests.xml</suite.xml>
+            </properties>
 
         </profile>
     </profiles>
 
     <dependencies>
-        <!-- TODO Project does not compile -->
-        <!-- TODO Unable to find dependency -->
         <dependency>
-            <groupId>com.epam.tat.module4.calculator</groupId>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>3.14.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-api</artifactId>
+            <version>3.14.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-support</artifactId>
+            <version>3.14.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.epam.tat.module4</groupId>
             <artifactId>calculator</artifactId>
             <version>1.0</version>
+            <systemPath>${project.basedir}/lib/calculator-1.0.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>6.14.3</version>
         </dependency>
-    </dependencies>
 
+    </dependencies>
+    <build>
+        <defaultGoal>clean,test</defaultGoal>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.12.4</version>
+            </plugin>
+        </plugins>
+    </build>
 </project>

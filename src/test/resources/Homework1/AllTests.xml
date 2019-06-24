@@ -1,0 +1,23 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="AllTests">
+    <test name="Add">
+        <classes>
+            <class name="Homework1.AddTest"/>
+        </classes>
+    </test>
+    <test name="Subtract">
+        <classes>
+            <class name="Homework1.SubtractTest"/>
+        </classes>
+    </test>
+    <test name="Multiply">
+        <classes>
+            <class name="Homework1.MultiplyTest"/>
+        </classes>
+    </test>
+    <test name="Divide">
+        <classes>
+            <class name="Homework1.DivideTest"/>
+        </classes>
+    </test>
+</suite>
