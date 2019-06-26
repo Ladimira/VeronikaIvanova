@@ -9,5 +9,9 @@ public class DataProviders {
     public static Object[][] correctData() {
         return new Object[][]{{1L, 2L, 1.0, 2.0}};
     }
+    @DataProvider(name = "browserTitle")
+    public static Object[][] browserTitle(){
+        return new Object[][]{{"Home Page"}};
+    }
 }
 
