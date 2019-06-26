@@ -1,3 +1,4 @@
+// TODO package name should be in lower case
 package Homework2.ex1;
 
 import org.openqa.selenium.By;
@@ -46,7 +47,7 @@ public class Exercise1 {
         assertFooter();
     }
 
-
+    // TODO Code duplication EX2
     @BeforeMethod
     //1. Open test site by URL
     private void setUp() {
@@ -56,6 +57,7 @@ public class Exercise1 {
         driver.get("https://epam.github.io/JDI/");
     }
 
+    // TODO Code duplication EX2
     @AfterMethod
     //17. Close browser
     public void tearDown() {
@@ -63,14 +65,18 @@ public class Exercise1 {
     }
 
     //2. Assert browser title
+    // TODO Code duplication EX2
     private void assertBrowserTitle(String expectedTitle) {
         assertEquals(driver.getTitle(), expectedTitle);
     }
 
      //3. Perform login
-    private void performLogin(String login, String password) {
+     // TODO Code duplication EX2
+     private void performLogin(String login, String password) {
+        // TODO Where should be setting implicitly waits???
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         //click on dropdown arrow
+         // TODO Why do you create this fields?
         WebElement dropDownButton = driver.findElement(By.cssSelector("a[href=\"#\"]"));
         dropDownButton.click();
         //enter login and password
@@ -84,6 +90,7 @@ public class Exercise1 {
     }
 
     //4. Assert username
+    // TODO Code duplication EX2
     private void assertUsername(String username) {
         //assert username
         WebElement nameLabel = driver.findElement(By.id("user-name"));
@@ -138,6 +145,7 @@ public class Exercise1 {
 
     //10. Assert that there is the iframe in the center of page
     private void assertIframe(){
+        // TODO Why do you use try-catch here?
         try {
             WebElement iframe = driver.findElement(By.id("iframe"));
             assertTrue(iframe != null);
@@ -153,6 +161,7 @@ public class Exercise1 {
         //switch to iframe
         driver.switchTo().frame(driver.findElement(By.id("iframe")));
         //assert epam logo
+        // TODO Why do you use try-catch here?
         try {
         WebElement logo = driver.findElement(By.id("epam_logo"));
         assertTrue(logo!=null);
@@ -185,12 +194,16 @@ public class Exercise1 {
     //15. Assert there is a Left Section
     private void assertLeftSection(){
         WebElement leftSection = driver.findElement(By.name("navigation-sidebar"));
+        // TODO in this case better use assertNotNull
+        // TODO why do you decide not use footer.isDisplayed()?
         assertTrue(leftSection!=null);
     }
 
     //16. Assert there is a Footer
     private void assertFooter(){
         WebElement footer = driver.findElement(By.cssSelector("footer"));
+        // TODO in this case better use assertNotNull
+        // TODO why do you decide not use footer.isDisplayed()?
         assertTrue(footer!=null);
     }
 
