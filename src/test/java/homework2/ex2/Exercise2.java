@@ -1,10 +1,9 @@
-package Homework2.ex2;
+package homework2.ex2;
 
+import homework2.base.UserLoginTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -12,98 +11,66 @@ import org.testng.annotations.Test;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.assertFalse;
 
-public class Exercise2 {
-    private WebDriver driver;
+public class Exercise2 extends UserLoginTest {
 
     @Test
-    public void BigDiffElementsTest()
-    {
+    public void BigDiffElementsTest() {
+
+
         assertBrowserTitle("Home Page");
-        performLogin("epam","1234");
+        performLogin("epam", "1234");
         assertUsername("PITER CHAILOVSKII");
         assertServiceHeader(Arrays.asList("SUPPORT", "DATES", "COMPLEX TABLE", "SIMPLE TABLE",
                 "TABLE WITH PAGES", "DIFFERENT ELEMENTS"));
         assertServiceLeft(Arrays.asList("Support", "Dates", "Complex Table", "Simple Table",
                 "Table with pages", "Different elements"));
         openDifferentElemsPage("https://epam.github.io/JDI/different-elements.html");
-        assertElemsOnPage(Arrays.asList("Water","Earth","Wind", "Fire"),
-                Arrays.asList("Gold","Silver","Bronze","Selen"));
+        assertElemsOnPage(Arrays.asList("Water", "Earth", "Wind", "Fire"),
+                Arrays.asList("Gold", "Silver", "Bronze", "Selen"));
         assertRightSection();
         assertLeftSection();
-        selectCheckboxes();
-        checkLogForCheckboxes();
-        selectRadio();
-        checkLogForRadio();
+        List<String> checkboxesToSelect = Arrays.asList("Water", "Wind");
+        selectCheckboxes(checkboxesToSelect);
+        checkLogForCheckboxes(checkboxesToSelect,true);
+        selectRadio("Selen");
+        checkLogForRadio("Selen");
         selectInDropdown("Yellow");
         checkLogForSelect();
-        unselectCheckboxes();
-        checkLogForCheckboxesFalse();
+        unselectCheckboxes(checkboxesToSelect);
+        checkLogForCheckboxes(checkboxesToSelect,false);
     }
 
 
-
-
+    // TODO Code duplication EX1 : done
     @BeforeMethod
     //1. Open test site by URL
-    private void setUp() {
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("https://epam.github.io/JDI/");
+    public void setUp() {
+        super.setUp();
     }
 
+    // TODO Code duplication EX1 : done
     @AfterMethod
     //19. Close browser
     public void tearDown() {
-        driver.quit();
-    }
-
-    //2. Assert browser title
-    private void assertBrowserTitle(String expectedTitle) {
-        driver.manage().timeouts().pageLoadTimeout(5,TimeUnit.SECONDS);
-        assertEquals(driver.getTitle(), expectedTitle);
-    }
-
-    //3. Perform login
-    private void performLogin(String login, String password) {
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-        //click on dropdown arrow
-        WebElement dropDownButton = driver.findElement(By.cssSelector("a[href=\"#\"]"));
-        dropDownButton.click();
-        //enter login and password
-        WebElement loginBox = driver.findElement(By.id("name"));
-        WebElement passwordBox = driver.findElement(By.id("password"));
-        loginBox.sendKeys(login);
-        passwordBox.sendKeys(password);
-        //click login button
-        WebElement loginButton = driver.findElement(By.id("login-button"));
-        loginButton.click();
-    }
-
-    //4. Assert username
-    private void assertUsername(String username) {
-        //assert username
-        WebElement nameLabel = driver.findElement(By.id("user-name"));
-        assertEquals(nameLabel.getText(),username);
+        super.tearDown();
     }
 
     //5. Click on "Service" subcategory in the header and check that drop down contains options
+    // TODO Looks like code duplication from the Ex1 :extracted menu text assertion to superclass, done
     private void assertServiceHeader(List<String> expectedItems) {
         menuItemClick("SERVICE");
         //check if there are all service menu items
-        for(String elem: expectedItems){
+        for (String elem : expectedItems) {
             WebElement item = driver.findElement(By.linkText(elem));
-            //Check if menu item is displayed
-            assertTrue(item.isDisplayed());
-            //check item text
-            assertEquals(item.getText(),elem);
+            assertElementWithText(item,elem);
         }
     }
+
     //support method for clicking
     private void menuItemClick(String service) {
         WebElement serviceMenu = driver.findElement(By.linkText(service));
@@ -111,41 +78,41 @@ public class Exercise2 {
     }
 
     //6. Click on Service subcategory in the left section and check that drop down contains options
+    // TODO Looks like code duplication from the Ex1  :extracted menu text assertion to superclass, done
     private void assertServiceLeft(List<String> expectedItems) {
         menuItemClick("Service");
         //check if there are all service menu items
-        for(String elem: expectedItems){
+        for (String elem : expectedItems) {
             WebElement item = driver.findElement(By.linkText(elem));
-            //Check if menu item is displayed
-            assertTrue(item.isDisplayed());
-            //check item text
-            assertEquals(item.getText(),elem);
+            assertElementWithText(item,elem);
         }
     }
+
     //7. Open through the header menu Service -> Different Elements Page
     private void openDifferentElemsPage(String diffElemsUrl) {
         menuItemClick("SERVICE");
         menuItemClick("DIFFERENT ELEMENTS");
-        assertEquals(driver.getCurrentUrl(),diffElemsUrl);
+        assertEquals(driver.getCurrentUrl(), diffElemsUrl);
     }
 
     //8. Check interface on Different elements page, it contains all needed elements
-    private void assertElemsOnPage(List<String> checkTexts, List<String> radioTexts){
+    private void assertElemsOnPage(List<String> checkTexts, List<String> radioTexts) {
         //assert checkboxes
         List<WebElement> checkboxes = driver.findElements(By.className("label-checkbox"));
-        for(WebElement elem:checkboxes){
+        // TODO Looks like code duplication from the Ex1 :extracted label text assertion to superclass, done
+        for (WebElement elem : checkboxes) {
             //assert label text
-            assertEquals(elem.getText(),checkTexts.get(checkboxes.indexOf(elem)));
+            assertElementWithText(elem,checkTexts.get(checkboxes.indexOf(elem)));
             //assert input presence
-            assertElemFromOtherElement(elem,By.tagName("input"));
+            assertElemFromOtherElement(elem, By.tagName("input"));
         }
         //assert radiobuttons
         List<WebElement> radios = driver.findElements(By.className("label-radio"));
-        for(WebElement elem:radios){
-            //assert label text
-            assertEquals(elem.getText(),radioTexts.get(radios.indexOf(elem)));
+        // TODO Looks like code duplication from the Ex1  :extracted label text assertion to superclass, done
+        for (WebElement elem : radios) {
+            assertElementWithText(elem,radioTexts.get(radios.indexOf(elem)));
             //assert input presence
-            assertElemFromOtherElement(elem,By.tagName("input"));
+            assertElemFromOtherElement(elem, By.tagName("input"));
 
         }
         //assert dropdown
@@ -155,27 +122,19 @@ public class Exercise2 {
         assertElemFromDriver(By.cssSelector("input[value=\"Button\"]"));
     }
 
+
+
     //support method for element assertion
-    private void assertElemFromDriver(By by) {
+    private void assertElemFromOtherElement(WebElement elem, By by) {
+        // TODO Why do you decide use try-catch : skype discussed
         try {
-            WebElement elem = driver.findElement(by);
-            assertTrue(elem != null);
-        }
-        catch (NoSuchElementException e){
+            WebElement target = elem.findElement(by);
+            assertTrue(target.isDisplayed());
+        } catch (NoSuchElementException e) {
             e.printStackTrace();
         }
     }
 
-    //support method for element assertion
-    private void assertElemFromOtherElement(WebElement elem,By by) {
-        try {
-            WebElement target = elem.findElement(by);
-            assertTrue(target != null);
-        }
-        catch (NoSuchElementException e){
-            e.printStackTrace();
-        }
-    }
     //9. Assert that there is Right Section
     private void assertRightSection() {
         assertElemFromDriver(By.className("right-fix-panel"));
@@ -187,50 +146,60 @@ public class Exercise2 {
     }
 
     //11. Select checkboxes
-    private void selectCheckboxes(){
-        WebElement checkboxWater = driver.findElement(By.xpath("//label[@class='label-checkbox'][1]")).findElement(By.tagName("input"));
-        WebElement checkboxWind = driver.findElement(By.xpath("//label[@class='label-checkbox'][3]")).findElement(By.tagName("input"));
-        checkboxWater.click();
-        checkboxWind.click();
-    }
+    // TODO Is it possible parametrized this method to get checkbox name? : done
+    private void selectCheckboxes(List<String> checkboxes) {
+        // TODO locator could be improved : done
+        for (String name : checkboxes) {
+            WebElement checkbox = driver.findElement(By.xpath("//label[text()[contains(.,'" + name + "')]]")).findElement(By.tagName("input"));
+            checkbox.click();
+        }
+
+    }//label[text()[contains(.,'ABC')]]
 
     //12. Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox.
-    private void checkLogForCheckboxes(){
-        assertElemFromDriver(By.xpath("//li[contains(text(),'Water : condition changed to true')]"));
-        assertElemFromDriver(By.xpath("//li[contains(text(),'Wind : condition changed to true')]"));
+    //18. Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox.
+    // TODO Is it possible parametrized this method to get checkbox name? : done
+    private void checkLogForCheckboxes(List<String> checkboxes, boolean state) {
+        for (String name : checkboxes) {
+            assertElemFromDriver(By.xpath("//li[contains(text(),'" + name + " : condition changed to"+state+" ')]"));
+        }
     }
+
     //13. Select radio
-    private void selectRadio(){
-        WebElement radioSelen = driver.findElement(By.xpath("//label[@class='label-radio'][4]")).findElement(By.tagName("input"));
-        radioSelen.click();
+    // TODO Is it possible parametrized this method to get radio name? : done
+    private void selectRadio(String radioName) {
+        // TODO locator could be improved : done
+        WebElement radio = driver.findElement(By.xpath("//label[text()[contains(.,'" + radioName + "')]]")).findElement(By.tagName("input"));
+        radio.click();
     }
+
     //14. Assert that for radiobutton there is a log row and value is corresponded to the status of radiobutton.
-    private void checkLogForRadio(){
-        assertElemFromDriver(By.xpath("//li[contains(text(),'metal: value changed to Selen')]"));
+    private void checkLogForRadio(String radioName) {
+        assertElemFromDriver(By.xpath("//li[contains(text(),'metal: value changed to " + radioName + "')]"));
     }
+
     //15. Select in dropdown
-    private void selectInDropdown(String value){
+    private void selectInDropdown(String value) {
         WebElement colorsDropdown = driver.findElement(By.className("colors")).findElement(By.className("uui-form-element"));
         Select colorsSelect = new Select(colorsDropdown);
         colorsSelect.selectByValue(value);
     }
 
     //16. Assert that for dropdown there is a log row and value is corresponded to the selected value.
-    private void checkLogForSelect(){
+    private void checkLogForSelect() {
         assertElemFromDriver(By.xpath("//li[contains(text(),'Colors: value changed to Yellow')]"));
     }
+
     //17. Unselect and assert checkboxes
-    private void unselectCheckboxes(){
-        WebElement checkboxWater = driver.findElement(By.xpath("//label[@class='label-checkbox'][1]")).findElement(By.tagName("input"));
-        WebElement checkboxWind = driver.findElement(By.xpath("//label[@class='label-checkbox'][3]")).findElement(By.tagName("input"));
-        checkboxWater.click();
-        checkboxWind.click();
-        assertTrue(!checkboxWater.isSelected());
-        assertTrue(!checkboxWind.isSelected());
-    }
-    //18. Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox.
-    private void checkLogForCheckboxesFalse(){
-        assertElemFromDriver(By.xpath("//li[contains(text(),'Water : condition changed to false')]"));
-        assertElemFromDriver(By.xpath("//li[contains(text(),'Wind : condition changed to false')]"));
+    // TODO Is it possible parametrized this method to get checkbox name? : done
+    private void unselectCheckboxes(List<String> checkboxes) {
+        // TODO locator could be improved : done
+        selectCheckboxes(checkboxes);
+        // TODO could be replaced to assertFalse : done
+        for (String name : checkboxes) {
+            WebElement checkbox = driver.findElement(By.xpath("//label[text()[contains(.,'" + name + "')]]")).findElement(By.tagName("input"));
+            assertFalse(checkbox.isSelected());
+        }
     }
 }
+

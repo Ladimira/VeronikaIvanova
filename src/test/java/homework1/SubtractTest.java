@@ -1,4 +1,5 @@
-package Homework1;
+// TODO package name should be in lower case
+package homework1;
 
 import com.epam.tat.module4.Calculator;
 import org.testng.annotations.AfterMethod;
@@ -8,19 +9,23 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 
 public class SubtractTest {
+    // TODO could be extraced to the base class
     Calculator calculator;
 
+    // TODO could be extraced to the base class
     @BeforeMethod
     public void setUp() {
         calculator = new Calculator();
     }
 
+    // TODO could be extraced to the base class
     @AfterMethod
     public void tearDown() {
         calculator = null;
     }
 
     @Test(dataProviderClass = DataProviders.class, dataProvider = "correct data")
+    // TODO IMHO it will be better to split this test to the two
     public void positiveNumbersTest(long a, long b, double c, double d) {
         //test sub of longs
         assertEquals(calculator.sub(a, b), a - b);
@@ -29,6 +34,7 @@ public class SubtractTest {
     }
 
     @Test(dataProviderClass = DataProviders.class, dataProvider = "correct data")
+    // TODO IMHO it will be better to split this test to the two
     public void negativeNumbersTest(long a, long b, double c, double d) {
         //test sub of longs
         assertEquals(calculator.sub(a, b), b - a);
@@ -37,6 +43,7 @@ public class SubtractTest {
     }
 
     @Test(dataProviderClass = DataProviders.class, dataProvider = "correct data")
+    // TODO IMHO it will be better to split this test to the two
     public void zeroTest(long a, long b, double c, double d) {
         //test sub of longs
         assertEquals(calculator.sub(0, b), - b);
@@ -45,6 +52,7 @@ public class SubtractTest {
     }
 
     @Test(dataProviderClass = DataProviders.class, dataProvider = "correct data")
+    // TODO IMHO it will be better to split this test to the two
     public void differentSignNumbersTest(long a, long b, double c, double d) {
         //test sub of longs
         assertEquals(calculator.sub(a, -b), a + b);
