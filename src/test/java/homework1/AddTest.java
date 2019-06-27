@@ -1,4 +1,4 @@
-package Homework1;
+package homework1;
 
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -8,12 +8,15 @@ import com.epam.tat.module4.Calculator;
 import static org.testng.Assert.assertEquals;
 
 public class AddTest {
+    // TODO could be extraced to the base class
     Calculator calculator;
+    // TODO could be extraced to the base class
 
     @BeforeMethod
     public void setUp() {
         calculator = new Calculator();
     }
+    // TODO could be extraced to the base class
 
     @AfterMethod
     public void tearDown() {
@@ -21,6 +24,7 @@ public class AddTest {
     }
 
     @Test(dataProviderClass = DataProviders.class, dataProvider = "correct data")
+    // TODO IMHO it will be better to split this test to the two
     public void positiveNumbersTest(long a, long b, double c, double d) {
         //test sum of longs
         assertEquals(calculator.sum(a, b), a + b);
@@ -30,6 +34,7 @@ public class AddTest {
     }
 
     @Test(dataProviderClass = DataProviders.class, dataProvider = "correct data")
+    // TODO IMHO it will be better to split this test to the two
     public void negativeNumbersTest(long a, long b, double c, double d) {
         //test sum of longs
         assertEquals(calculator.sum(-a, -b), -(a + b));
@@ -38,6 +43,7 @@ public class AddTest {
     }
 
     @Test(dataProviderClass = DataProviders.class, dataProvider = "correct data")
+    // TODO IMHO it will be better to split this test to the two
     public void zeroTest(long a, long b, double c, double d) {
         //test sum of longs
         assertEquals(calculator.sum(0, b), b);
@@ -46,6 +52,7 @@ public class AddTest {
     }
 
     @Test(dataProviderClass = DataProviders.class, dataProvider = "correct data")
+    // TODO IMHO it will be better to split this test to the two
     public void differentSignNumbersTest(long a, long b, double c, double d) {
         //test sum of longs
         assertEquals(calculator.sum(a, -b), a - b);

@@ -15,14 +15,14 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <suite.xml>src/test/resources/Homework2/Homework2.xml</suite.xml>
+                <suite.xml>src/test/resources/homework2/homework2.xml</suite.xml>
             </properties>
 
         </profile>
         <profile>
             <id>AddSubtract</id>
             <properties>
-                <suite.xml>src/test/resources/Homework1/AddSubtract.xml</suite.xml>
+                <suite.xml>src/test/resources/homework1/AddSubtract.xml</suite.xml>
             </properties>
 
         </profile>
@@ -30,7 +30,7 @@
         <profile>
             <id>MultiplyDivide</id>
             <properties>
-                <suite.xml>src/test/resources/Homework1/MultiplyDivide.xml</suite.xml>
+                <suite.xml>src/test/resources/homework1/MultiplyDivide.xml</suite.xml>
             </properties>
 
         </profile>
@@ -38,7 +38,7 @@
         <profile>
             <id>AllTests</id>
             <properties>
-                <suite.xml>src/test/resources/Homework1/AllTests.xml</suite.xml>
+                <suite.xml>src/test/resources/homework1/AllTests.xml</suite.xml>
             </properties>
 
         </profile>
