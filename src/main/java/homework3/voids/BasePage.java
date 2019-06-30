@@ -10,6 +10,8 @@ import java.util.List;
 
 public class BasePage {
     protected WebDriver driver;
+
+    // TODO Why do you deide make fields public?
     //top menu
     @FindBy(css = "ul.m-18>li>a")
     public List<WebElement> topMenu;
@@ -47,6 +49,8 @@ public class BasePage {
         this.driver = driver;
         PageFactory.initElements(driver,this);
     }
+
+    // TODO Which style we use for method and field names?
     public void Login(String login, String password){
         dropDownButton.click();
         loginBox.sendKeys(login);

@@ -22,6 +22,8 @@ public class HomePageSteps {
     public void assertMenu(){
         int i = 0;
         for(MainMenu menuItem:MainMenu.values()){
+            // TODO You will have here Nu;;pPointer Exception
+            // TODO If size topMenu will be less then MainMenu.values()
             assertEquals(homePage.topMenu.get(i).getText(),menuItem.name().toUpperCase());
             assertTrue(homePage.topMenu.get(i).isDisplayed());
             i++;

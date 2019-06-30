@@ -1,4 +1,3 @@
-// TODO package name should be in lower case
 package homework1;
 
 import com.epam.tat.module4.Calculator;
@@ -24,7 +23,7 @@ public class SubtractTest {
         calculator = null;
     }
 
-    @Test(dataProviderClass = DataProviders.class, dataProvider = "correct data")
+    @Test(dataProviderClass = homework1.DataProviders.class, dataProvider = "correct data")
     // TODO IMHO it will be better to split this test to the two
     public void positiveNumbersTest(long a, long b, double c, double d) {
         //test sub of longs

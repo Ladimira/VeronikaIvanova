@@ -29,7 +29,7 @@
         <profile>
             <id>Hw2</id>
             <properties>
-                <suite.xml>src/test/resources/homework2/Homework2.xml</suite.xml>
+                <suite.xml>src/test/resources/homework2/homework2.xml</suite.xml>
             </properties>
 
         </profile>

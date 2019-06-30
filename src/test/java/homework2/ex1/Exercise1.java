@@ -1,11 +1,9 @@
-// TODO package name should be in lower case : done
 package homework2.ex1;
 
 import homework2.base.UserLoginTest;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 
@@ -41,17 +39,7 @@ public class Exercise1 extends UserLoginTest {
         assertFooter();
     }
 
-    @BeforeMethod
-    //1. Open test site by URL
-    public void setUp() {
-        super.setUp();
-    }
 
-    @AfterMethod
-    //19. Close browser
-    public void tearDown() {
-        super.tearDown();
-    }
     //6. Assert that there are 4 items on the header section are displayed and they have proper texts
     private void assertMenu(List<String> expectedItems){
         //check if there are 4 menu items
@@ -97,7 +85,6 @@ public class Exercise1 extends UserLoginTest {
 
     //10. Assert that there is the iframe in the center of page
     private void assertIframe(){
-        // TODO Why do you use try-catch here? : skype discussed
         assertElemFromDriver(By.id("iframe"));
     }
 
@@ -106,7 +93,13 @@ public class Exercise1 extends UserLoginTest {
         //switch to iframe
         driver.switchTo().frame(driver.findElement(By.id("iframe")));
         //assert epam logo
-        // TODO Why do you use try-catch here? : skype discussed
+        try {
+        WebElement logo = driver.findElement(By.id("epam_logo"));
+        assertTrue(logo!=null);
+        }
+        catch (NoSuchElementException e){
+            e.printStackTrace();
+        }
         assertElemFromDriver(By.id("epam_logo"));
 
     }
@@ -134,16 +127,12 @@ public class Exercise1 extends UserLoginTest {
     //15. Assert there is a Left Section
     private void assertLeftSection(){
         WebElement leftSection = driver.findElement(By.name("navigation-sidebar"));
-        // TODO in this case better use assertNotNull : done
-        // TODO why do you decide not use footer.isDisplayed()? : done
         assertTrue(leftSection.isDisplayed());
     }
 
     //16. Assert there is a Footer
     private void assertFooter(){
         WebElement footer = driver.findElement(By.cssSelector("footer"));
-        // TODO in this case better use assertNotNull : done
-        // TODO why do you decide not use footer.isDisplayed()? : done
         assertTrue(footer.isDisplayed());
     }
 
