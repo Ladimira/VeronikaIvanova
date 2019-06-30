@@ -16,7 +16,6 @@ import static org.testng.Assert.assertTrue;
 public class UserLoginTest {
     protected WebDriver driver;
 
-    // TODO Code duplication EX2 :extracted to superclass, done
     @BeforeMethod
     //1. Open test site by URL
     public void setUp() {
@@ -27,7 +26,6 @@ public class UserLoginTest {
         driver.get("https://epam.github.io/JDI/");
     }
 
-    // TODO Code duplication EX2 :extracted to superclass, done
     @AfterMethod
     //17. Close browser
     public void tearDown() {
@@ -35,17 +33,12 @@ public class UserLoginTest {
     }
 
     //2. Assert browser title
-    // TODO Code duplication EX2 :extracted to superclass, done
     protected void assertBrowserTitle(String expectedTitle) {
         assertEquals(driver.getTitle(), expectedTitle);
     }
 
     //3. Perform login
-     // TODO Code duplication EX2 :extracted to superclass, done
     protected void performLogin(String login, String password) {
-        // TODO Where should be setting implicitly waits??? : done
-        //click on dropdown arrow
-         // TODO Why do you create this fields? : Skype discussed
         WebElement dropDownButton = driver.findElement(By.cssSelector("a[href=\"#\"]"));
         dropDownButton.click();
         //enter login and password
@@ -59,7 +52,6 @@ public class UserLoginTest {
     }
 
     //4. Assert username
-    // TODO Code duplication EX2 :extracted to superclass, done
     protected void assertUsername(String username) {
         //assert username
         WebElement nameLabel = driver.findElement(By.id("user-name"));
@@ -68,7 +60,6 @@ public class UserLoginTest {
 
     //support method for element assertion
     public void assertElemFromDriver(By by) {
-        // TODO Why do you decide use try-catch : skype discussed; extracted to superclass from Ex2
         try {
             WebElement elem = driver.findElement(by);
             assertTrue(elem.isDisplayed());

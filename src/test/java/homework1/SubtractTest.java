@@ -1,9 +1,4 @@
-// TODO package name should be in lower case
-<<<<<<< HEAD:src/test/java/Homework1/SubtractTest.java
-package Homework1;
-=======
 package homework1;
->>>>>>> da9a783dcfa4fd0bad225b4c62e4db7831ded9f3:src/test/java/homework1/SubtractTest.java
 
 import com.epam.tat.module4.Calculator;
 import org.testng.annotations.AfterMethod;
@@ -28,7 +23,7 @@ public class SubtractTest {
         calculator = null;
     }
 
-    @Test(dataProviderClass = DataProviders.class, dataProvider = "correct data")
+    @Test(dataProviderClass = homework1.DataProviders.class, dataProvider = "correct data")
     // TODO IMHO it will be better to split this test to the two
     public void positiveNumbersTest(long a, long b, double c, double d) {
         //test sub of longs

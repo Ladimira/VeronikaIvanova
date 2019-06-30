@@ -8,6 +8,9 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 public class HomePage extends BasePage {
+
+    // TODO Why do you deide make fields public?
+
     //main content
     @FindBy (id="iframe")
     public WebElement iframe;

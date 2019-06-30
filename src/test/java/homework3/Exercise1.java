@@ -1,4 +1,3 @@
-// TODO package name should be in lower case : done
 package homework3;
 
 import homework3.steps.HomePageSteps;
@@ -39,12 +38,14 @@ public class Exercise1 extends BaseTest {
 
     @BeforeMethod
     //1. Open test site by URL
+    // TODO I think this call is redundant here
     public void setUp() {
         super.setUp();
     }
 
     @AfterMethod
     //19. Close browser
+    // TODO I think this call is redundant here
     public void tearDown() {
         super.tearDown();
     }

@@ -1,16 +1,9 @@
-<<<<<<< HEAD:src/test/java/Homework2/ex1/Exercise1.java
-// TODO package name should be in lower case
-package Homework2.ex1;
-=======
-// TODO package name should be in lower case : done
 package homework2.ex1;
->>>>>>> da9a783dcfa4fd0bad225b4c62e4db7831ded9f3:src/test/java/homework2/ex1/Exercise1.java
 
 import homework2.base.UserLoginTest;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 
@@ -46,59 +39,7 @@ public class Exercise1 extends UserLoginTest {
         assertFooter();
     }
 
-<<<<<<< HEAD:src/test/java/Homework2/ex1/Exercise1.java
-    // TODO Code duplication EX2
-=======
->>>>>>> da9a783dcfa4fd0bad225b4c62e4db7831ded9f3:src/test/java/homework2/ex1/Exercise1.java
-    @BeforeMethod
-    //1. Open test site by URL
-    public void setUp() {
-        super.setUp();
-    }
 
-    // TODO Code duplication EX2
-    @AfterMethod
-    //19. Close browser
-    public void tearDown() {
-<<<<<<< HEAD:src/test/java/Homework2/ex1/Exercise1.java
-        driver.quit();
-    }
-
-    //2. Assert browser title
-    // TODO Code duplication EX2
-    private void assertBrowserTitle(String expectedTitle) {
-        assertEquals(driver.getTitle(), expectedTitle);
-    }
-
-     //3. Perform login
-     // TODO Code duplication EX2
-     private void performLogin(String login, String password) {
-        // TODO Where should be setting implicitly waits???
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        //click on dropdown arrow
-         // TODO Why do you create this fields?
-        WebElement dropDownButton = driver.findElement(By.cssSelector("a[href=\"#\"]"));
-        dropDownButton.click();
-        //enter login and password
-        WebElement loginBox = driver.findElement(By.id("name"));
-        WebElement passwordBox = driver.findElement(By.id("password"));
-        loginBox.sendKeys(login);
-        passwordBox.sendKeys(password);
-        //click login button
-        WebElement loginButton = driver.findElement(By.id("login-button"));
-        loginButton.click();
-    }
-
-    //4. Assert username
-    // TODO Code duplication EX2
-    private void assertUsername(String username) {
-        //assert username
-        WebElement nameLabel = driver.findElement(By.id("user-name"));
-        assertEquals(nameLabel.getText(),username);
-=======
-        super.tearDown();
->>>>>>> da9a783dcfa4fd0bad225b4c62e4db7831ded9f3:src/test/java/homework2/ex1/Exercise1.java
-    }
     //6. Assert that there are 4 items on the header section are displayed and they have proper texts
     private void assertMenu(List<String> expectedItems){
         //check if there are 4 menu items
@@ -144,20 +85,7 @@ public class Exercise1 extends UserLoginTest {
 
     //10. Assert that there is the iframe in the center of page
     private void assertIframe(){
-<<<<<<< HEAD:src/test/java/Homework2/ex1/Exercise1.java
-        // TODO Why do you use try-catch here?
-        try {
-            WebElement iframe = driver.findElement(By.id("iframe"));
-            assertTrue(iframe != null);
-        }
-        catch (NoSuchElementException e){
-            e.printStackTrace();
-        }
-
-=======
-        // TODO Why do you use try-catch here? : skype discussed
         assertElemFromDriver(By.id("iframe"));
->>>>>>> da9a783dcfa4fd0bad225b4c62e4db7831ded9f3:src/test/java/homework2/ex1/Exercise1.java
     }
 
     //11. Switch to the iframe and check that there is Epam logo in the left top conner of iframe
@@ -165,8 +93,6 @@ public class Exercise1 extends UserLoginTest {
         //switch to iframe
         driver.switchTo().frame(driver.findElement(By.id("iframe")));
         //assert epam logo
-<<<<<<< HEAD:src/test/java/Homework2/ex1/Exercise1.java
-        // TODO Why do you use try-catch here?
         try {
         WebElement logo = driver.findElement(By.id("epam_logo"));
         assertTrue(logo!=null);
@@ -174,11 +100,8 @@ public class Exercise1 extends UserLoginTest {
         catch (NoSuchElementException e){
             e.printStackTrace();
         }
-=======
-        // TODO Why do you use try-catch here? : skype discussed
         assertElemFromDriver(By.id("epam_logo"));
 
->>>>>>> da9a783dcfa4fd0bad225b4c62e4db7831ded9f3:src/test/java/homework2/ex1/Exercise1.java
     }
 
     //12. Switch to original window back
@@ -204,29 +127,13 @@ public class Exercise1 extends UserLoginTest {
     //15. Assert there is a Left Section
     private void assertLeftSection(){
         WebElement leftSection = driver.findElement(By.name("navigation-sidebar"));
-<<<<<<< HEAD:src/test/java/Homework2/ex1/Exercise1.java
-        // TODO in this case better use assertNotNull
-        // TODO why do you decide not use footer.isDisplayed()?
-        assertTrue(leftSection!=null);
-=======
-        // TODO in this case better use assertNotNull : done
-        // TODO why do you decide not use footer.isDisplayed()? : done
         assertTrue(leftSection.isDisplayed());
->>>>>>> da9a783dcfa4fd0bad225b4c62e4db7831ded9f3:src/test/java/homework2/ex1/Exercise1.java
     }
 
     //16. Assert there is a Footer
     private void assertFooter(){
         WebElement footer = driver.findElement(By.cssSelector("footer"));
-<<<<<<< HEAD:src/test/java/Homework2/ex1/Exercise1.java
-        // TODO in this case better use assertNotNull
-        // TODO why do you decide not use footer.isDisplayed()?
-        assertTrue(footer!=null);
-=======
-        // TODO in this case better use assertNotNull : done
-        // TODO why do you decide not use footer.isDisplayed()? : done
         assertTrue(footer.isDisplayed());
->>>>>>> da9a783dcfa4fd0bad225b4c62e4db7831ded9f3:src/test/java/homework2/ex1/Exercise1.java
     }
 
 }
