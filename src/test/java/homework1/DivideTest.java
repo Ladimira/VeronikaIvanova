@@ -1,4 +1,4 @@
-package Homework1;
+package homework1;
 
 import com.epam.tat.module4.Calculator;
 import org.testng.annotations.AfterMethod;
