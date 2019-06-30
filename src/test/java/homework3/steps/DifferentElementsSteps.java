@@ -29,6 +29,8 @@ public class DifferentElementsSteps {
         basePage.topMenu.get(2).click();
         int i = 0;
         for(ServiceMenu menuItem:ServiceMenu.values()){
+            // TODO You will have here Nu;;pPointer Exception
+            // TODO If size serviceLeftMenu will be less then ServiceMenu.values()
             assertEquals(basePage.serviceTopMenu.get(i).getText(),menuItem.name().toUpperCase());
             assertTrue(basePage.serviceTopMenu.get(i).isDisplayed());
             i++;
@@ -39,6 +41,8 @@ public class DifferentElementsSteps {
         basePage.leftMenu.get(2).click();
         int i = 0;
         for(ServiceMenu menuItem:ServiceMenu.values()){
+            // TODO You will have here Nu;;pPointer Exception
+            // TODO If size serviceLeftMenu will be less then ServiceMenu.values()
             assertEquals(basePage.serviceLeftMenu.get(i).getText(),menuItem.name());
             assertTrue(basePage.serviceLeftMenu.get(i).isDisplayed());
             i++;
@@ -54,6 +58,8 @@ public class DifferentElementsSteps {
     public void assertElemsOnPage() {
         int i = 0;
         for (Radiobuttons btn:Radiobuttons.values()){
+            // TODO You will have here Nu;;pPointer Exception
+            // TODO If size radios will be less then Radiobuttons.values()
             assertEquals(differentElementsPage.radios.get(i).getText(),btn.name());
             assertTrue(differentElementsPage.radios.get(i).isDisplayed());
             assertTrue(differentElementsPage.radios.get(i).findElement(By.tagName("input")).isDisplayed());
@@ -61,6 +67,8 @@ public class DifferentElementsSteps {
         }
         i = 0;
         for (Checkboxes btn:Checkboxes.values()){
+            // TODO You will have here Nu;;pPointer Exception
+            // TODO If size checkboxes will be less then Checkboxes.values()
             assertEquals(differentElementsPage.checkboxes.get(i).getText(),btn.name());
             assertTrue(differentElementsPage.checkboxes.get(i).isDisplayed());
             assertTrue(differentElementsPage.checkboxes.get(i).findElement(By.tagName("input")).isDisplayed());
