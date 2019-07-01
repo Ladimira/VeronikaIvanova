@@ -32,7 +32,7 @@ public class BaseTest {
         properties = new Properties();
         try
         {
-            FileInputStream fis = new FileInputStream("src/test/resources/homework3/homework3.properties");
+            FileInputStream fis = new FileInputStream("src/test/resources/homework4/homework4.properties");
             properties.load(fis);
         }
         catch(IOException e){

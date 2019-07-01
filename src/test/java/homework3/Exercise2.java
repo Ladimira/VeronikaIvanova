@@ -39,16 +39,9 @@ public class Exercise2 extends BaseTest {
     }
 
 
-    // TODO I think this call is redundant here
-    public void setUp() {
-        super.setUp();
-    }
+    // TODO I think this call is redundant here : done
 
-    @AfterMethod
-    // TODO I think this call is redundant here
-    public void tearDown() {
-        super.tearDown();
-    }
+        // TODO I think this call is redundant here :done
 
 }
 

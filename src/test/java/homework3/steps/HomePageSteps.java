@@ -21,60 +21,64 @@ public class HomePageSteps {
 
     public void assertMenu(){
         int i = 0;
+        if(!homePage.checkListLength(homePage.getTopMenu(),MainMenu.CONTACT_FORM)){
+            assertTrue(false);
+            return;
+        }
         for(MainMenu menuItem:MainMenu.values()){
             // TODO You will have here Nu;;pPointer Exception
-            // TODO If size topMenu will be less then MainMenu.values()
-            assertEquals(homePage.topMenu.get(i).getText(),menuItem.name().toUpperCase());
-            assertTrue(homePage.topMenu.get(i).isDisplayed());
+            // TODO If size topMenu will be less then MainMenu.values() : done
+            assertEquals(homePage.getTopMenu().get(i).getText(),menuItem.name().toUpperCase());
+            assertTrue(homePage.getTopMenu().get(i).isDisplayed());
             i++;
         }
     }
 
     public void assertImages(){
-        assertEquals(homePage.images.size(), 4);
-        for(WebElement img:homePage.images){
+        assertEquals(homePage.getImages().size(), 4);
+        for(WebElement img: homePage.getImages()){
             assertTrue(img.isDisplayed());
         }
     }
 
     public void assertImageTexts(List<String> imageTexts){
-        assertEquals(homePage.textboxes.size(), 4);
-        for(WebElement text:homePage.textboxes){
+        assertEquals(homePage.getTextboxes().size(), 4);
+        for(WebElement text: homePage.getTextboxes()){
             assertTrue(text.isDisplayed());
-            assertEquals(text.getText(),imageTexts.get(homePage.textboxes.indexOf(text)));
+            assertEquals(text.getText(),imageTexts.get(homePage.getTextboxes().indexOf(text)));
         }
     }
 
     public void assertMainHeader(String mainTitle, String jdiText){
-        assertEquals(homePage.mainTitle.getText(),mainTitle);
-        assertEquals(homePage.jdiText.getText(),jdiText.toUpperCase());
+        assertEquals(homePage.getMainTitle().getText(),mainTitle);
+        assertEquals(homePage.getJdiText().getText(),jdiText.toUpperCase());
     }
 
     public void assertIframe(){
-        assertTrue(homePage.iframe.isDisplayed());
+        assertTrue(homePage.getIframe().isDisplayed());
     }
 
     public void assertLogo(){
         homePage.switchToIframe();
-        assertTrue(homePage.epamLogo.isDisplayed());
+        assertTrue(homePage.getEpamLogo().isDisplayed());
         homePage.switchBack();
     }
 
     public void assertSubHeader(String subHeader){
-        assertTrue(homePage.subHeader.isDisplayed());
-        assertEquals(homePage.subHeader.getText(),subHeader);
+        assertTrue(homePage.getSubHeader().isDisplayed());
+        assertEquals(homePage.getSubHeader().getText(),subHeader);
     }
 
     public void assertSubHeaderIsLink(String subHeaderLink){
-        assertEquals(homePage.subHeader.getTagName(),"a");
-        assertEquals(homePage.subHeader.getAttribute("href"),subHeaderLink);
+        assertEquals(homePage.getSubHeader().getTagName(),"a");
+        assertEquals(homePage.getSubHeader().getAttribute("href"),subHeaderLink);
     }
 
     public void assertLeftSection(){
-        assertTrue(homePage.leftSection.isDisplayed());
+        assertTrue(homePage.getLeftSection().isDisplayed());
     }
 
     public void assertFooter(){
-        assertTrue(homePage.footer.isDisplayed());
+        assertTrue(homePage.getFooter().isDisplayed());
     }
 }

@@ -11,51 +11,99 @@ import java.util.List;
 public class BasePage {
     protected WebDriver driver;
 
-    // TODO Why do you deide make fields public?
+    // TODO Why do you deide make fields public? :done
     //top menu
     @FindBy(css = "ul.m-18>li>a")
-    public List<WebElement> topMenu;
+    List<WebElement> topMenu;
 
     //service top menu
     @FindBy(css="ul.dropdown-menu>li>a")
-    public List<WebElement> serviceTopMenu;
+    List<WebElement> serviceTopMenu;
 
     //left-side menu
     @FindBy(className="navigation-sidebar")
-    public WebElement leftSection;
+    WebElement leftSection;
     @FindBy(css="ul.sidebar-menu>li>a")
-    public List<WebElement> leftMenu;
+    List<WebElement> leftMenu;
 
     //service left menu
     @FindBy(css="ul.sub>li>a")
-    public List<WebElement> serviceLeftMenu;
+    List<WebElement> serviceLeftMenu;
 
     //login fields
     @FindBy(css = "a[href=\"#\"]")
-    public WebElement dropDownButton;
+    WebElement dropDownButton;
     @FindBy (id="name")
-    public WebElement loginBox;
+    WebElement loginBox;
     @FindBy (id="password")
-    public WebElement passwordBox;
+    WebElement passwordBox;
     @FindBy (id="login-button")
-    public WebElement loginButton;
-    public WebElement nameLabel;
+    WebElement loginButton;
+    WebElement nameLabel;
 
     //footer
     @FindBy (css="footer")
-    public WebElement footer;
+    WebElement footer;
 
     public BasePage(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver,this);
     }
 
-    // TODO Which style we use for method and field names?
-    public void Login(String login, String password){
+    public List<WebElement> getTopMenu() {
+        return topMenu;
+    }
+
+    public List<WebElement> getServiceTopMenu() {
+        return serviceTopMenu;
+    }
+
+    public WebElement getLeftSection() {
+        return leftSection;
+    }
+
+    public List<WebElement> getLeftMenu() {
+        return leftMenu;
+    }
+
+    public List<WebElement> getServiceLeftMenu() {
+        return serviceLeftMenu;
+    }
+
+    public WebElement getDropDownButton() {
+        return dropDownButton;
+    }
+
+    public WebElement getLoginBox() {
+        return loginBox;
+    }
+
+    public WebElement getPasswordBox() {
+        return passwordBox;
+    }
+
+    public WebElement getLoginButton() {
+        return loginButton;
+    }
+
+    public WebElement getNameLabel() {
+        return nameLabel;
+    }
+
+    public WebElement getFooter() {
+        return footer;
+    }
+
+    // TODO Which style we use for method and field names? :done
+    public void login(String login, String password){
         dropDownButton.click();
         loginBox.sendKeys(login);
         passwordBox.sendKeys(password);
         loginButton.click();
         nameLabel = driver.findElement(By.id("user-name"));
+    }
+
+    public <E extends Enum> boolean  checkListLength(List<WebElement> list, E checkedEnum){
+        return list.size()==checkedEnum.getDeclaringClass().getEnumConstants().length;
     }
 }

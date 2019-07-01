@@ -36,19 +36,12 @@ public class Exercise1 extends BaseTest {
         homePageSteps.assertFooter();
     }
 
-    @BeforeMethod
-    //1. Open test site by URL
-    // TODO I think this call is redundant here
-    public void setUp() {
-        super.setUp();
-    }
 
-    @AfterMethod
-    //19. Close browser
-    // TODO I think this call is redundant here
-    public void tearDown() {
-        super.tearDown();
-    }
+    // TODO I think this call is redundant here : done
+
+
+    // TODO I think this call is redundant here : done
+
 
 
 

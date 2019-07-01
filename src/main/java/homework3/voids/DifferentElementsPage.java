@@ -11,26 +11,54 @@ import java.util.List;
 public class DifferentElementsPage extends BasePage
 {
 
-    // TODO Why do you deide make fields public?
+    // TODO Why do you deide make fields public? : done
 
     //sections
     @FindBy (className = "right-fix-panel")
-    public WebElement rightSection;
+    WebElement rightSection;
     //checkboxes
     @FindBy (className = "label-checkbox")
-    public List<WebElement> checkboxes;
+    List<WebElement> checkboxes;
     //radiobuttons
     @FindBy (className = "label-radio")
-    public List<WebElement> radios;
+    List<WebElement> radios;
     //select
     @FindBy(className = "uui-form-element")
-    public WebElement colorsDropdown;
-    public Select colorsSelect;
-    //buttons
+    WebElement colorsDropdown;
+    Select colorsSelect;
+    //butons
     @FindBy (name="Default Button")
-    public WebElement defaultButton;
+     WebElement defaultButton;
     @FindBy (css="input[value=\"Button\"]")
-    public WebElement button;
+    WebElement button;
+
+    public WebElement getRightSection() {
+        return rightSection;
+    }
+
+    public List<WebElement> getCheckboxes() {
+        return checkboxes;
+    }
+
+    public List<WebElement> getRadios() {
+        return radios;
+    }
+
+    public WebElement getColorsDropdown() {
+        return colorsDropdown;
+    }
+
+    public Select getColorsSelect() {
+        return colorsSelect;
+    }
+
+    public WebElement getDefaultButton() {
+        return defaultButton;
+    }
+
+    public WebElement getButton() {
+        return button;
+    }
 
     public DifferentElementsPage(WebDriver driver) {
         super(driver);

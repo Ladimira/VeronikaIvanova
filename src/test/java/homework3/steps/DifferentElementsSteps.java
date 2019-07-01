@@ -6,10 +6,8 @@ import homework3.enums.ServiceMenu;
 import homework3.voids.BasePage;
 import homework3.voids.DifferentElementsPage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
@@ -26,31 +24,40 @@ public class DifferentElementsSteps {
     }
 
     public void assertServiceHeader() {
-        basePage.topMenu.get(2).click();
+        basePage.getTopMenu().get(2).click();
         int i = 0;
+        if(!basePage.checkListLength(basePage.getServiceTopMenu(),ServiceMenu.COMPLEX_TABLE)){
+            assertTrue(false);
+            return;
+        }
         for(ServiceMenu menuItem:ServiceMenu.values()){
             // TODO You will have here Nu;;pPointer Exception
-            // TODO If size serviceLeftMenu will be less then ServiceMenu.values()
-            assertEquals(basePage.serviceTopMenu.get(i).getText(),menuItem.name().toUpperCase());
-            assertTrue(basePage.serviceTopMenu.get(i).isDisplayed());
+            // TODO If size serviceLeftMenu will be less then ServiceMenu.values() :done
+
+            assertEquals(basePage.getServiceTopMenu().get(i).getText(),menuItem.name().toUpperCase());
+            assertTrue(basePage.getServiceTopMenu().get(i).isDisplayed());
             i++;
         }
     }
 
     public void assertServiceLeft() {
-        basePage.leftMenu.get(2).click();
+        basePage.getLeftMenu().get(2).click();
         int i = 0;
+        if(!basePage.checkListLength(basePage.getServiceTopMenu(),ServiceMenu.COMPLEX_TABLE)){
+            assertTrue(false);
+            return;
+        }
         for(ServiceMenu menuItem:ServiceMenu.values()){
             // TODO You will have here Nu;;pPointer Exception
-            // TODO If size serviceLeftMenu will be less then ServiceMenu.values()
-            assertEquals(basePage.serviceLeftMenu.get(i).getText(),menuItem.name());
-            assertTrue(basePage.serviceLeftMenu.get(i).isDisplayed());
+            // TODO If size serviceLeftMenu will be less then ServiceMenu.values() : done
+            assertEquals(basePage.getServiceLeftMenu().get(i).getText(),menuItem.name());
+            assertTrue(basePage.getServiceLeftMenu().get(i).isDisplayed());
             i++;
         }
     }
 
     public void openDifferentElemsPage(String diffElemsUrl) {
-        basePage.serviceLeftMenu.get(7).click();
+        basePage.getServiceLeftMenu().get(7).click();
         differentElementsPage = new DifferentElementsPage(driver);
         assertEquals(driver.getCurrentUrl(), diffElemsUrl);
     }
@@ -59,33 +66,41 @@ public class DifferentElementsSteps {
         int i = 0;
         for (Radiobuttons btn:Radiobuttons.values()){
             // TODO You will have here Nu;;pPointer Exception
-            // TODO If size radios will be less then Radiobuttons.values()
-            assertEquals(differentElementsPage.radios.get(i).getText(),btn.name());
-            assertTrue(differentElementsPage.radios.get(i).isDisplayed());
-            assertTrue(differentElementsPage.radios.get(i).findElement(By.tagName("input")).isDisplayed());
+            // TODO If size radios will be less then Radiobuttons.values() : done
+            if(!basePage.checkListLength(differentElementsPage.getRadios(),Radiobuttons.BRONZE)){
+                assertTrue(false);
+                return;
+            }
+            assertEquals(differentElementsPage.getRadios().get(i).getText(),btn.name());
+            assertTrue(differentElementsPage.getRadios().get(i).isDisplayed());
+            assertTrue(differentElementsPage.getRadios().get(i).findElement(By.tagName("input")).isDisplayed());
             i++;
         }
         i = 0;
         for (Checkboxes btn:Checkboxes.values()){
             // TODO You will have here Nu;;pPointer Exception
-            // TODO If size checkboxes will be less then Checkboxes.values()
-            assertEquals(differentElementsPage.checkboxes.get(i).getText(),btn.name());
-            assertTrue(differentElementsPage.checkboxes.get(i).isDisplayed());
-            assertTrue(differentElementsPage.checkboxes.get(i).findElement(By.tagName("input")).isDisplayed());
+            // TODO If size checkboxes will be less then Checkboxes.values():done
+            if(!basePage.checkListLength(differentElementsPage.getCheckboxes(),Checkboxes.WATER)){
+                assertTrue(false);
+                return;
+            }
+            assertEquals(differentElementsPage.getCheckboxes().get(i).getText(),btn.name());
+            assertTrue(differentElementsPage.getCheckboxes().get(i).isDisplayed());
+            assertTrue(differentElementsPage.getCheckboxes().get(i).findElement(By.tagName("input")).isDisplayed());
             i++;
         }
-        assertTrue(differentElementsPage.button.isDisplayed());
-        assertTrue(differentElementsPage.defaultButton.isDisplayed());
-        assertTrue(differentElementsPage.colorsDropdown.isDisplayed());
+        assertTrue(differentElementsPage.getButton().isDisplayed());
+        assertTrue(differentElementsPage.getDefaultButton().isDisplayed());
+        assertTrue(differentElementsPage.getColorsDropdown().isDisplayed());
     }
 
 
     public void assertRightSection() {
-        assertTrue(differentElementsPage.rightSection.isDisplayed());
+        assertTrue(differentElementsPage.getRightSection().isDisplayed());
     }
 
     public void assertLeftSection() {
-        assertTrue(differentElementsPage.leftSection.isDisplayed());
+        assertTrue(differentElementsPage.getLeftSection().isDisplayed());
     }
 
     public void selectCheckboxes(List<String> checkboxes) {
@@ -110,7 +125,7 @@ public class DifferentElementsSteps {
     }
 
     public void selectInDropdown(String value) {
-        differentElementsPage.colorsSelect.selectByValue(value);
+        differentElementsPage.getColorsSelect().selectByValue(value);
     }
 
     public void checkLogForSelect(String value) {

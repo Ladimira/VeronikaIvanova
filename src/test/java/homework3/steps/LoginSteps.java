@@ -19,10 +19,10 @@ public class LoginSteps {
 
     public void login(String login, String password) {
         basePage = new BasePage(driver);
-        basePage.Login(login, password);
+        basePage.login(login, password);
     }
 
     public void assertUsername(String username) {
-        assertEquals(basePage.nameLabel.getText(), username);
+        assertEquals(basePage.getNameLabel().getText(), username);
     }
 }
