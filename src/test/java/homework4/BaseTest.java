@@ -31,14 +31,12 @@ public class BaseTest {
 
     }
 
-    public void getProperties(){
+    public void getProperties() {
         properties = new Properties();
-        try
-        {
+        try {
             FileInputStream fis = new FileInputStream("src/test/resources/homework4/homework4.properties");
             properties.load(fis);
-        }
-        catch(IOException e){
+        } catch (IOException e) {
         }
     }
 }

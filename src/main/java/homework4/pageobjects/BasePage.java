@@ -2,11 +2,8 @@ package homework4.pageobjects;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.SelenideElement;
-import homework4.enums.ServiceMenu;
 import org.openqa.selenium.By;
 
-import java.util.List;
 
 import static com.codeborne.selenide.Selenide.*;
 
@@ -17,11 +14,11 @@ public class BasePage {
     private ElementsCollection leftMenu;
     private ElementsCollection leftServiceMenu;
 
-    public void BasePage() {
-        mainMenu = $$(By.className("m-18"));
-        serviceMenu = $$(By.className("dropdown-menu"));
-        leftMenu = $$(By.className("sidebar-menu"));
-        leftServiceMenu = $$(By.className("sub"));
+    public BasePage() {
+        mainMenu = $(By.className("m-18")).findAll(By.tagName("li"));
+        serviceMenu = $(By.className("dropdown-menu")).findAll(By.tagName("li"));
+        leftMenu = $(By.className("sidebar-menu")).findAll(By.tagName("li"));
+        leftServiceMenu = $(By.className("sub")).findAll(By.tagName("li"));
     }
 
     public void login(String name, String password) {
@@ -53,16 +50,9 @@ public class BasePage {
         leftServiceMenu.findBy(Condition.text(menuItemName)).click();
     }
 
-    public ElementsCollection getMainMenu() {
-        return mainMenu;
-    }
 
     public ElementsCollection getServiceMenu() {
         return serviceMenu;
-    }
-
-    public ElementsCollection getLeftMenu() {
-        return leftMenu;
     }
 
     public ElementsCollection getLeftServiceMenu() {

@@ -16,7 +16,7 @@ public class BaseSteps {
     }
 
     public void assertBrowserTitle(String title) {
-        assertEquals(title(),title);
+        assertEquals(title(), title);
     }
 
     public void login(String login, String password) {

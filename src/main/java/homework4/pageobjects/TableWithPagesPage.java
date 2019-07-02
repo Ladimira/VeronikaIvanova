@@ -11,30 +11,31 @@ import static com.codeborne.selenide.Selenide.$$;
 public class TableWithPagesPage {
 
 
-    public SelenideElement getRightSection(){
+    public SelenideElement getRightSection() {
         return $(By.name("log-sidebar"));
     }
 
-    public SelenideElement getLeftSection(){
+    public SelenideElement getLeftSection() {
         return $(By.name("navigation-sidebar"));
     }
 
-    public String getDefaultSelectValue(){
+    public String getDefaultSelectValue() {
         return $(By.name("table-with-pages_length")).getSelectedValue();
     }
 
-    public void selectValueInDropdown(String value){
+    public void selectValueInDropdown(String value) {
         $(By.name("table-with-pages_length")).setValue(value);
     }
 
-    public SelenideElement getLogRow(String text){
+    public SelenideElement getLogRow(String text) {
         return $$(By.cssSelector("ul.logs>li")).findBy(Condition.text(text));
     }
 
-    public int getTableRowCount(){
+    public int getTableRowCount() {
         return $(By.id("table-with-pages")).findAll(By.tagName("tr")).size();
     }
-    public ElementsCollection search(String query){
+
+    public ElementsCollection search(String query) {
         $(By.cssSelector("input[type=\"search\"]")).setValue(query);
         return $(By.id("table-with-pages")).findAll(By.tagName("tr"));
     }
