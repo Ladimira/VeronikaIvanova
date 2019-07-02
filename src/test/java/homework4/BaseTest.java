@@ -1,6 +1,7 @@
 package homework4;
 
 import com.codeborne.selenide.Configuration;
+import homework4.steps.BaseSteps;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
@@ -11,7 +12,8 @@ import java.util.Properties;
 import static com.codeborne.selenide.Selenide.open;
 
 public class BaseTest {
-    private Properties properties;
+    protected Properties properties;
+    protected BaseSteps baseSteps;
 
     @BeforeMethod
     public void setUp() {
@@ -20,6 +22,7 @@ public class BaseTest {
         Configuration.timeout = 4000;
         Configuration.startMaximized = true;
         open(properties.getProperty("homepage.link"));
+        baseSteps = new BaseSteps();
     }
 
 
