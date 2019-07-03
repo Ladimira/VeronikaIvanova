@@ -1,7 +1,7 @@
 package homework4;
 
 
-import homework4.builders.FormDataBuilder;
+import homework4.builder.FormDataBuilder;
 import homework4.dataproviders.FormDataProvider;
 import homework4.steps.MetalsColorsSteps;
 import org.testng.annotations.Test;
@@ -15,9 +15,11 @@ public class Exercise2 extends BaseTest {
                 baseSteps.assertUsername(properties.getProperty("user.username").toUpperCase());
         baseSteps.clickTopMenuItem(properties.getProperty("metalscolors.menu"));
         MetalsColorsSteps metalsColorsSteps = new MetalsColorsSteps();
-        metalsColorsSteps.fillForm(formDataBuilder.summaryRadio1, formDataBuilder.summaryRadio2, formDataBuilder.color, formDataBuilder.metal,
-                formDataBuilder.elements, formDataBuilder.vegetables);
-        metalsColorsSteps.assertResult(formDataBuilder.summaryRadio1, formDataBuilder.summaryRadio2, formDataBuilder.color, formDataBuilder.metal,
-                formDataBuilder.elements, formDataBuilder.vegetables);
+        metalsColorsSteps.fillForm(formDataBuilder.getSummaryRadio1(), formDataBuilder.getSummaryRadio2(),
+                formDataBuilder.getColor(), formDataBuilder.getMetal(),
+                formDataBuilder.getElements(), formDataBuilder.getVegetables());
+        metalsColorsSteps.assertResult(formDataBuilder.getSummaryRadio1(), formDataBuilder.getSummaryRadio2(),
+                formDataBuilder.getColor(), formDataBuilder.getMetal(),
+                formDataBuilder.getElements(), formDataBuilder.getVegetables());
     }
 }
