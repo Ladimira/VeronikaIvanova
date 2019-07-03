@@ -11,7 +11,6 @@ import java.util.List;
 public class DifferentElementsPage extends BasePage
 {
 
-    // TODO Why do you deide make fields public? : done
 
     //sections
     @FindBy (className = "right-fix-panel")
