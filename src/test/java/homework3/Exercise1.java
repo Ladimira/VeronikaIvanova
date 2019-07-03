@@ -36,13 +36,4 @@ public class Exercise1 extends BaseTest {
         homePageSteps.assertFooter();
     }
 
-
-    // TODO I think this call is redundant here : done
-
-
-    // TODO I think this call is redundant here : done
-
-
-
-
 }

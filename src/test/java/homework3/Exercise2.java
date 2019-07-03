@@ -38,10 +38,5 @@ public class Exercise2 extends BaseTest {
         differentElementsSteps.checkLogForCheckboxes(checkboxesToSelect,false);
     }
 
-
-    // TODO I think this call is redundant here : done
-
-        // TODO I think this call is redundant here :done
-
 }
 

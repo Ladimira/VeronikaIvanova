@@ -9,7 +9,7 @@ import java.util.List;
 
 public class HomePage extends BasePage {
 
-    // TODO Why do you deide make fields public? :done
+    // TODO What is the structure of java class?
 
     public WebElement getIframe() {
         return iframe;
