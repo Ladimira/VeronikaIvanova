@@ -46,8 +46,8 @@ public class BaseSteps {
         basePage.leftMenuItemClick(itemName);
     }
 
-    public void clickServiceLeftMenuItem(String itemName) {
-        basePage.leftServiceMenuItemClick(itemName);
+    public void logout() {
+        basePage.logout();
     }
 
 }

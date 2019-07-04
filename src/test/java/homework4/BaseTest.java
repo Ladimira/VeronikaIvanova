@@ -28,7 +28,7 @@ public class BaseTest {
 
     @AfterMethod
     public void tearDown() {
-
+        baseSteps.logout();
     }
 
     public void getProperties() {
@@ -39,4 +39,6 @@ public class BaseTest {
         } catch (IOException e) {
         }
     }
+
+
 }

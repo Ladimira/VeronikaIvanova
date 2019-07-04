@@ -1,5 +1,6 @@
 package homework4.pageobjects;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
@@ -28,6 +29,7 @@ public class MetalsColorsPage {
     }
 
     public void selectVegetables(List<String> vegetables) {
+        $(By.id("vegetables")).find(By.tagName("button")).click();
         ElementsCollection vegetablesList = $(By.id("salad-dropdown")).find(By.className("dropdown-menu")).findAll(By.tagName("li"));
         for (SelenideElement elem : vegetablesList) {
             if (vegetables.contains(elem.getText())) {
@@ -44,10 +46,12 @@ public class MetalsColorsPage {
     }
 
     public void selectMetal(String metal) {
-        $(By.cssSelector("select.selectpicker")).setValue(metal);
+        $(By.id("metals")).find(By.className("caret")).click();
+        $(By.id("metals")).findAll(By.cssSelector("ul[role=\"menu\"]>li")).findBy(Condition.text(metal)).click();
     }
 
     public void selectColor(String color) {
-        $(By.cssSelector("button.btn-default")).setValue(color);
+        $(By.cssSelector("button[title=\"Colors\"]")).click();
+        $$(By.cssSelector("ul[role=\"menu\"]>li")).findBy(Condition.text(color)).click();
     }
 }

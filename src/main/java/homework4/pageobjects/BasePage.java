@@ -15,7 +15,8 @@ public class BasePage {
     private ElementsCollection leftServiceMenu;
 
     public BasePage() {
-        mainMenu = $(By.className("m-18")).findAll(By.tagName("li"));
+
+        mainMenu = $(By.cssSelector("ul.uui-navigation.nav.navbar-nav.m-l8")).findAll(By.tagName("li"));
         serviceMenu = $(By.className("dropdown-menu")).findAll(By.tagName("li"));
         leftMenu = $(By.className("sidebar-menu")).findAll(By.tagName("li"));
         leftServiceMenu = $(By.className("sub")).findAll(By.tagName("li"));
@@ -57,5 +58,10 @@ public class BasePage {
 
     public ElementsCollection getLeftServiceMenu() {
         return leftServiceMenu;
+    }
+
+    public void logout(){
+        $(By.cssSelector("a[href=\"#\"]")).click();
+        $(By.cssSelector("div.logout>button")).click();
     }
 }
