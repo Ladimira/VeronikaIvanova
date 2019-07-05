@@ -1,4 +1,4 @@
-package homework3.voids;
+package homework5.voids;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -16,37 +16,37 @@ public class BasePage {
     List<WebElement> topMenu;
 
     //service top menu
-    @FindBy(css = "ul.dropdown-menu>li>a")
+    @FindBy(css="ul.dropdown-menu>li>a")
     List<WebElement> serviceTopMenu;
 
     //left-side menu
-    @FindBy(className = "navigation-sidebar")
+    @FindBy(className="navigation-sidebar")
     WebElement leftSection;
-    @FindBy(css = "ul.sidebar-menu>li>a")
+    @FindBy(css="ul.sidebar-menu>li>a")
     List<WebElement> leftMenu;
 
     //service left menu
-    @FindBy(css = "ul.sub>li>a")
+    @FindBy(css="ul.sub>li>a")
     List<WebElement> serviceLeftMenu;
 
     //login fields
     @FindBy(css = "a[href=\"#\"]")
     WebElement dropDownButton;
-    @FindBy(id = "name")
+    @FindBy (id="name")
     WebElement loginBox;
-    @FindBy(id = "password")
+    @FindBy (id="password")
     WebElement passwordBox;
-    @FindBy(id = "login-button")
+    @FindBy (id="login-button")
     WebElement loginButton;
     WebElement nameLabel;
 
     //footer
-    @FindBy(css = "footer")
+    @FindBy (css="footer")
     WebElement footer;
 
-    public BasePage(WebDriver driver) {
+    public BasePage(WebDriver driver){
         this.driver = driver;
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(driver,this);
     }
 
     public List<WebElement> getTopMenu() {
@@ -93,7 +93,7 @@ public class BasePage {
         return footer;
     }
 
-    public void login(String login, String password) {
+    public void login(String login, String password){
         dropDownButton.click();
         loginBox.sendKeys(login);
         passwordBox.sendKeys(password);
@@ -101,7 +101,7 @@ public class BasePage {
         nameLabel = driver.findElement(By.id("user-name"));
     }
 
-    public <E extends Enum> boolean checkListLength(List<WebElement> list, E checkedEnum) {
-        return list.size() == checkedEnum.getDeclaringClass().getEnumConstants().length;
+    public <E extends Enum> boolean  checkListLength(List<WebElement> list, E checkedEnum){
+        return list.size()==checkedEnum.getDeclaringClass().getEnumConstants().length;
     }
 }

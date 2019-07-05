@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="homework5">
+    <test name="LoginTest">
+        <classes>
+            <class name="homework5.ExercisePassed"/>
+        </classes>
+    </test>
+    <test name="DifferentElementsTest">
+        <classes>
+            <class name="homework5.ExerciseFailed"></class>
+        </classes>
+    </test>
+</suite>
