@@ -1,11 +1,12 @@
 package homework5;
 
 import homework5.steps.DifferentElementsSteps;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
 import java.util.List;
-
+@Listeners(AllureAttachmentListener.class)
 public class ExerciseFailed extends BaseTest {
 
     @Test(testName = "Big different elements page test")

@@ -1,8 +1,9 @@
 package homework5.steps;
 
-import homework5.voids.BasePage;
 import homework5.TestProvider;
+import homework5.voids.BasePage;
 import io.qameta.allure.Step;
+import io.qameta.allure.testng.TestInstanceParameter;
 import org.openqa.selenium.WebDriver;
 
 import static org.testng.Assert.assertEquals;

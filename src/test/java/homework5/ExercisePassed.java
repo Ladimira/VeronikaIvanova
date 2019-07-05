@@ -1,12 +1,13 @@
 package homework5;
 
 import homework5.steps.HomePageSteps;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
 
 
-
+@Listeners(AllureAttachmentListener.class)
 public class ExercisePassed extends BaseTest {
     HomePageSteps homePageSteps;
 
