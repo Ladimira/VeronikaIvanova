@@ -3,7 +3,9 @@ package homework5.voids;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
@@ -12,15 +14,14 @@ public class BasePage {
     protected WebDriver driver;
 
     //top menu
-    @FindBy(css = "ul.m-18>li>a")
+    @FindBy(css = "ul.uui-navigation.nav.navbar-nav.m-l8>li>a")
     List<WebElement> topMenu;
 
     //service top menu
-    @FindBy(css="ul.dropdown-menu>li>a")
     List<WebElement> serviceTopMenu;
 
     //left-side menu
-    @FindBy(className="navigation-sidebar")
+    @FindBy(name = "navigation-sidebar")
     WebElement leftSection;
     @FindBy(css="ul.sidebar-menu>li>a")
     List<WebElement> leftMenu;
@@ -54,6 +55,7 @@ public class BasePage {
     }
 
     public List<WebElement> getServiceTopMenu() {
+        serviceTopMenu = driver.findElements(By.cssSelector("ul.dropdown-menu>li>a"));
         return serviceTopMenu;
     }
 

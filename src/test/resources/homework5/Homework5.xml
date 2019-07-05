@@ -2,12 +2,12 @@
 <suite name="homework5">
     <test name="LoginTest">
         <classes>
-            <class name="homework5.ExercisePassed"/>
+            <class name="homework5.ExerciseFailed"/>
         </classes>
     </test>
     <test name="DifferentElementsTest">
         <classes>
-            <class name="homework5.ExerciseFailed"></class>
+            <class name="homework5.ExercisePassed"></class>
         </classes>
     </test>
 </suite>

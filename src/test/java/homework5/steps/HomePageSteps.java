@@ -1,7 +1,7 @@
 package homework5.steps;
 
-import homework3.enums.MainMenu;
-import homework3.voids.HomePage;
+import homework5.enums.MainMenu;
+import homework5.voids.HomePage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -30,7 +30,7 @@ public class HomePageSteps {
         for (MainMenu menuItem : MainMenu.values()) {
             // TODO You will have here Nu;;pPointer Exception
             // TODO If size topMenu will be less then MainMenu.values() : done
-            assertEquals(homePage.getTopMenu().get(i).getText(), menuItem.name().toUpperCase());
+            assertEquals(homePage.getTopMenu().get(i).getText(), menuItem.getName().toUpperCase());
             assertTrue(homePage.getTopMenu().get(i).isDisplayed());
             i++;
         }
@@ -49,13 +49,21 @@ public class HomePageSteps {
         assertEquals(homePage.getTextboxes().size(), 4);
         for (WebElement text : homePage.getTextboxes()) {
             assertTrue(text.isDisplayed());
-            assertEquals(text.getText(), imageTexts.get(homePage.getTextboxes().indexOf(text)));
+            String txt = text.getText();
+            if (txt.contains("…")) {
+                txt = txt.replace("…","...");
+            } //to deal with assertion - "…" symbol from properties file is not recognized by assert
+            assertEquals(txt, imageTexts.get(homePage.getTextboxes().indexOf(text)));
         }
     }
 
     @Step("Assert main header")
     public void assertMainHeader(String mainTitle, String jdiText) {
-        assertEquals(homePage.getMainTitle().getText(), mainTitle);
+        String txt = homePage.getMainTitle().getText();
+        if (txt.contains("…")) {
+            txt = txt.replace("…","...");
+        } //to deal with assertion - "…" symbol from properties file is not recognized by assert
+        assertEquals(txt, mainTitle);
         assertEquals(homePage.getJdiText().getText(), jdiText.toUpperCase());
     }
 

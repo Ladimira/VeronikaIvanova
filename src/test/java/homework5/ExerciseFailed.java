@@ -1,34 +1,35 @@
 package homework5;
 
-import homework5.steps.HomePageSteps;
+import homework5.steps.DifferentElementsSteps;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
-
-import static org.testng.Assert.assertTrue;
-
+import java.util.List;
 
 public class ExerciseFailed extends BaseTest {
-    HomePageSteps homePageSteps;
 
-    @Test(testName = "Big login & home page test - failed")
-    public void BigLoginTest()
-    {
+    @Test(testName = "Big different elements page test")
+    public void BigDiffElementsTest() {
         loginSteps.assertBrowserTitle(properties.getProperty("homepage.title"));
         loginSteps.login(properties.getProperty("user.name"),properties.getProperty("user.password"));
         loginSteps.assertUsername(properties.getProperty("user.username").toUpperCase());
-        homePageSteps = new HomePageSteps(driver);
-        homePageSteps.assertMenu();
-        homePageSteps.assertImages();
-        homePageSteps.assertImageTexts(Arrays.asList(properties.getProperty("main.imagetexts").split("#")));
-        homePageSteps.assertMainHeader(properties.getProperty("main.maintitle"),properties.getProperty("main.jditext"));
-        homePageSteps.assertIframe();
-        homePageSteps.assertLogo();
-        homePageSteps.assertSubHeader(properties.getProperty("main.subheader"));
-        homePageSteps.assertSubHeaderIsLink("main.subheader.link");
-        homePageSteps.assertLeftSection();
-        homePageSteps.assertFooter();
-        assertTrue(false);
+        DifferentElementsSteps differentElementsSteps = new DifferentElementsSteps(driver);
+        differentElementsSteps.assertServiceHeader();
+        differentElementsSteps.assertServiceLeft();
+        differentElementsSteps.openDifferentElemsPage(properties.getProperty("diffelem.link"));
+        differentElementsSteps.assertElemsOnPage();
+        differentElementsSteps.assertRightSection();
+        differentElementsSteps.assertLeftSection();
+        List<String> checkboxesToSelect = Arrays.asList(properties.getProperty("diffelem.checktoselect").split("#"));
+        differentElementsSteps.selectCheckboxes(checkboxesToSelect);
+        differentElementsSteps.checkLogForCheckboxes(checkboxesToSelect,true);
+        differentElementsSteps.selectRadio(properties.getProperty("diffelem.radio"));
+        differentElementsSteps.checkLogForRadio(properties.getProperty("diffelem.radio"));
+        differentElementsSteps.selectInDropdown(properties.getProperty("diffelem.select"));
+        differentElementsSteps.checkLogForSelect(properties.getProperty("diffelem.select"));
+        differentElementsSteps.unselectCheckboxes(checkboxesToSelect);
+        differentElementsSteps.checkLogForCheckboxes(checkboxesToSelect,false);
     }
 
 }
+

@@ -17,7 +17,7 @@ public class HomePage extends BasePage {
     List<WebElement> images;
     @FindBy(className = "benefit-txt")
     List<WebElement> textboxes;
-    @FindBy(css = "\"h3.text-center a\"")
+    @FindBy(css = "h3.text-center a")
     WebElement subHeader;
     @FindBy(name = "main-title")
     WebElement mainTitle;
@@ -32,7 +32,7 @@ public class HomePage extends BasePage {
 
     public void switchToIframe() {
         driver.switchTo().frame(iframe);
-        epamLogo = driver.findElement(By.id("epam-logo"));
+        epamLogo = driver.findElement(By.id("epam_logo"));
     }
 
     public void switchBack() {

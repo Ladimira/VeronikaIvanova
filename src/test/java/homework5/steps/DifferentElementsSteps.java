@@ -1,10 +1,10 @@
 package homework5.steps;
 
-import homework3.enums.Checkboxes;
-import homework3.enums.Radiobuttons;
-import homework3.enums.ServiceMenu;
-import homework3.voids.BasePage;
-import homework3.voids.DifferentElementsPage;
+import homework5.enums.Checkboxes;
+import homework5.enums.Radiobuttons;
+import homework5.enums.ServiceMenu;
+import homework5.voids.BasePage;
+import homework5.voids.DifferentElementsPage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -36,7 +36,7 @@ public class DifferentElementsSteps {
             // TODO You will have here Nu;;pPointer Exception
             // TODO If size serviceLeftMenu will be less then ServiceMenu.values() :done
 
-            assertEquals(basePage.getServiceTopMenu().get(i).getText(), menuItem.name().toUpperCase());
+            assertEquals(basePage.getServiceTopMenu().get(i).getText(), menuItem.getName().toUpperCase());
             assertTrue(basePage.getServiceTopMenu().get(i).isDisplayed());
             i++;
         }
@@ -53,7 +53,7 @@ public class DifferentElementsSteps {
         for (ServiceMenu menuItem : ServiceMenu.values()) {
             // TODO You will have here Nu;;pPointer Exception
             // TODO If size serviceLeftMenu will be less then ServiceMenu.values() : done
-            assertEquals(basePage.getServiceLeftMenu().get(i).getText(), menuItem.name());
+            assertEquals(basePage.getServiceLeftMenu().get(i).getText(), menuItem.getName());
             assertTrue(basePage.getServiceLeftMenu().get(i).isDisplayed());
             i++;
         }
