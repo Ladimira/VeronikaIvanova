@@ -3,7 +3,7 @@ package homework5.steps;
 import homework5.TestProvider;
 import homework5.voids.BasePage;
 import io.qameta.allure.Step;
-import io.qameta.allure.testng.TestInstanceParameter;
+
 import org.openqa.selenium.WebDriver;
 
 import static org.testng.Assert.assertEquals;
@@ -14,6 +14,7 @@ public class LoginSteps {
 
     public LoginSteps(WebDriver driver) {
         this.driver = driver;
+        TestProvider.getInstance().setDriver(driver);
     }
 
     @Step("Check browser title")
@@ -25,7 +26,7 @@ public class LoginSteps {
     public void login(String login, String password) {
         basePage = new BasePage(driver);
         basePage.login(login, password);
-        TestProvider.getInstance().setDriver(driver);
+
     }
 
     public void assertUsername(String username) {
