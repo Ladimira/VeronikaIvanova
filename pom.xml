@@ -10,10 +10,17 @@
 
     <profiles>
         <profile>
-            <id>Hw4</id>
+            <id>Hw5</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
+            <properties>
+                <suite.xml>src/test/resources/homework5/Homework5.xml</suite.xml>
+            </properties>
+
+        </profile>
+        <profile>
+            <id>Hw4</id>
             <properties>
                 <suite.xml>src/test/resources/homework4/Homework4.xml</suite.xml>
             </properties>
