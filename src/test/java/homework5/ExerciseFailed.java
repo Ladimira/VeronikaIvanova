@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 import java.util.Arrays;
 import java.util.List;
-//@Listeners(AllureAttachmentListener.class)
+@Listeners(AllureAttachmentListener.class)
 public class ExerciseFailed extends BaseTest {
 
     @Test(testName = "Big different elements page test")

@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import java.util.Arrays;
 
 
-//@Listeners(AllureAttachmentListener.class)
+@Listeners(AllureAttachmentListener.class)
 public class ExercisePassed extends BaseTest {
     HomePageSteps homePageSteps;
 
