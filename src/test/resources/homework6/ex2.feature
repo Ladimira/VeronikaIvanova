@@ -13,18 +13,17 @@ Feature: Exercise02
     And 6 Description texts under images are displayed on Users Table on User Table Page
     And 6 checkboxes are displayed on Users Table on User Table Page
     And User table contains following values:
-      | Number | User             | Description                  |
-      | 1      | Roman            | Lorem ipsum                  |
-      | 2      | Sergey Ivan      | Lorem ipsum                  |
-      | 3      | Vladzimir        | Lorem ipsum                  |
-      | 4      | Helen Bennett    | Lorem ipsum some description |
-      | 5      | Yoshi Tannamuri  | Lorem ipsum some description |
-      | 6      | Giovanni Rovelli | Lorem ipsum some description |
+      | Number | User             | Description                         |
+      | 1      | Roman            | Wolverine                           |
+      | 2      | Sergey Ivan      | Spider Man                          |
+      | 3      | Vladzimir        | Punisher                            |
+      | 4      | Helen Bennett    | Captain America \n some description |
+      | 5      | Yoshi Tannamuri  | Cyclope \n some description         |
+      | 6      | Giovanni Rovelli | Hulk \n some description            |
     When I select 'vip' checkbox for "Sergey Ivan"
     Then 1 log row has "Vip: condition changed to true" text in log section
     When I click on dropdown in column Type for user Roman
     Then droplist contains values
-      | Dropdown Values |
       | Admin           |
       | User            |
       | Manager         |

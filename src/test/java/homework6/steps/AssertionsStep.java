@@ -1,12 +1,14 @@
 package homework6.steps;
 
 import cucumber.api.java.en.Then;
+import homework6.entities.User;
 import homework6.enums.Checkboxes;
 import homework6.enums.Radiobuttons;
 import homework6.hooks.TestContext;
-import homework6.voids.BasePage;
-import homework6.voids.DifferentElementsPage;
-import homework6.voids.HomePage;
+import homework6.pageobjects.BasePage;
+import homework6.pageobjects.DifferentElementsPage;
+import homework6.pageobjects.HomePage;
+import homework6.pageobjects.UserTablePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -191,6 +193,71 @@ public class AssertionsStep extends BaseStep {
         DifferentElementsPage differentElementsPage = new DifferentElementsPage(TestContext.getDriver());
         for (String name : checkboxes) {
             differentElementsPage.findLogLine(name + " : condition changed to false");
+        }
+    }
+
+    @Then("\"User Table\" page is opened")
+    public void userTablePageIsOpened(){
+        assertTrue(TestContext.getDriver().getCurrentUrl().contains("user-table.html"));
+    }
+
+    @Then("6 NumberType Dropdowns are displayed on Users Table on User Table Page")
+    public void numberTypeDropdownsAreDisplayed(){
+        UserTablePage userTablePage = new UserTablePage(TestContext.getDriver());
+        for(WebElement elem:userTablePage.getUserNumbers()){
+            assertTrue(elem.isDisplayed());
+        }
+    }
+
+    @Then("6 User names are displayed on Users Table on User Table Page")
+    public void userNamesAreDisplayed(){
+        UserTablePage userTablePage = new UserTablePage(TestContext.getDriver());
+        for(WebElement elem:userTablePage.getUserNames()){
+            assertTrue(elem.isDisplayed());
+        }
+    }
+    @Then("6 Description images are displayed on Users Table on User Table Page")
+    public void descriptionImagesAreDisplayed(){
+        UserTablePage userTablePage = new UserTablePage(TestContext.getDriver());
+        for(WebElement elem:userTablePage.getUserPics()){
+            assertTrue(elem.isDisplayed());
+        }
+    }
+    @Then("6 Description texts under images are displayed on Users Table on User Table Page")
+    public void descriptionTextsAreDisplayed(){
+        UserTablePage userTablePage = new UserTablePage(TestContext.getDriver());
+        for(WebElement elem:userTablePage.getUserDescrs()){
+            assertTrue(elem.isDisplayed());
+        }
+    }
+    @Then("6 checkboxes are displayed on Users Table on User Table Page")
+    public void checkboxesAreDisplayed(){
+        UserTablePage userTablePage = new UserTablePage(TestContext.getDriver());
+        for(WebElement elem:userTablePage.getUserChecks()){
+            assertTrue(elem.isDisplayed());
+        }
+    }
+    @Then("User table contains following values:")
+    public void userTableValuesShouldBe(List<User> users){
+        UserTablePage userTablePage = new UserTablePage(TestContext.getDriver());
+        int i = 0;
+        for(User user:users){
+            assertTrue(userTablePage.getUserNames().get(i).getText().contains(user.getName()));
+            assertTrue(userTablePage.getUserDescrs().get(i).getText().contains(user.getDescription()));
+            assertTrue(userTablePage.getUserNumbers().get(i).getText().contains(user.getNumber()));
+            i++;
+        }
+    }
+    @Then("1 log row has \".*\" text in log section")
+    public void logRowHasValue(String logText){
+        UserTablePage userTablePage = new UserTablePage(TestContext.getDriver());
+        assertTrue(userTablePage.findLogLine(logText).isDisplayed());
+    }
+    @Then("droplist contains values")
+    public void droplistValuesAre(List<String> values){
+        UserTablePage userTablePage = new UserTablePage(TestContext.getDriver());
+        for(WebElement elem:userTablePage.getUserTypeSelects().get(0).getOptions()){
+            assertTrue(values.contains(elem.getText()));
         }
     }
 }

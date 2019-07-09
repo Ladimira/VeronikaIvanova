@@ -1,4 +1,4 @@
-package homework6.voids;
+package homework6.pageobjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

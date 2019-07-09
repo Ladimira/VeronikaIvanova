@@ -10,4 +10,9 @@ public class GivenSteps extends BaseStep {
         TestContext.getDriver().get("https://epam.github.io/JDI/index.html");
     }
 
+    @Given("I am on \"Home Page\"")
+    public void iAmOnHomePage(){
+        TestContext.getDriver().get("https://epam.github.io/JDI/index.html");
+    }
+
 }
