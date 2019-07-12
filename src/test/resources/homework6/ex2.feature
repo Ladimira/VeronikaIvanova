@@ -6,7 +6,8 @@ Feature: Exercise02
     And I login as user "Piter Chailovskii"
     When I click on "Service" button in Header
     And I click on "User Table" button in Service dropdown
-    Then "User Table" page is opened
+    Then "User Table" page is opened'
+    # TODO This is not good idea to hardcoded values
     And 6 NumberType Dropdowns are displayed on Users Table on User Table Page
     And 6 User names are displayed on Users Table on User Table Page
     And 6 Description images are displayed on Users Table on User Table Page

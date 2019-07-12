@@ -5,7 +5,9 @@ Feature: Exercise01
     Given I am on the JDI Index Page
     When I login as
       | epam | 1234 |
+    # TODO Test failed
     Then User name should be 'PITER CHAILOVSKII'
+    # TODO on which page should be these elements
     And 4 pictures should be displayed
     And 4 texts under pictures should be displayed
     And Two headers above pictures are displayed
@@ -35,6 +37,7 @@ Feature: Exercise01
     And Log lines for each selected checkbox are present
       | Water | Wind |
     When I click on radiobutton 'Selen'
+    # TODO Undefined steps
     Then Radiobutton 'Selen' is selected
     And Log line for radiobutton 'Selen' is present
     When I select in dropdown 'Yellow'
